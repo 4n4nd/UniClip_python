@@ -6,5 +6,5 @@ def local_get_clipboard():
 def local_set_clipboard(clipboard_data):
 	pyperclip.copy(clipboard_data)
 
-local_set_clipboard("My Name is Khan")
-print (local_get_clipboard())
+# local_set_clipboard("My Name is Khan")
+# print (local_get_clipboard())
