@@ -25,7 +25,7 @@ except ImportError:
 # at ~/.credentials/sheets.googleapis.com-python-quickstart.json
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
 # CLIENT_SECRET_FILE = '/root/Downloads/client_id.json'
-CLIENT_SECRET_FILE = raw_input('Enter the location of the client_id.jason: ')
+CLIENT_SECRET_FILE = input('Enter the location of the client_id.jason: ')
 APPLICATION_NAME = 'UniClip_Python_Client'
 CB_DATA_CELL = 'A1'
 CB_DATA_TIMESTAMP_CELL = 'B1'
@@ -79,7 +79,7 @@ class cbdata_plus_time(object):
 
 credentials=get_credentials()
 gc = gspread.authorize(credentials)
-sheet_url = raw_input("Please enter the url of a google sheet:")
+sheet_url = input("Please enter the url of a google sheet:")
 sheet_url = 'https://docs.google.com/spreadsheets/d/1xB6whn__TJZ54bHUq7w9dr2O4NXXp9bi8cRkUFCQUzQ/edit#gid=0'
 # sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1xB6whn__TJZ54bHUq7w9dr2O4NXXp9bi8cRkUFCQUzQ/edit#gid=0')
 sh = gc.open_by_url(sheet_url)
@@ -125,7 +125,7 @@ while True:
 	# current_CB = cbdata_plus_time(local_get_clipboard(),time())
 	# print (current_CB.cb_data)
 	# passn owner for CLIPBO
-	sleep(5)
+	sleep(10)
 	pass
 pass
 
