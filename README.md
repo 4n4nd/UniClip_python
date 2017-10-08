@@ -1,5 +1,6 @@
 # UniClip_python
 # UniClip - Universal Clipboard is an application that lets you share your clipboard over multiple devices.
+# NOT FUNCTIONAL!!!
 
 This is the python version because why not?
 JK I hear python has great libraries for clipboard manipulation and I found a good python wrapper for the Google Sheets API.

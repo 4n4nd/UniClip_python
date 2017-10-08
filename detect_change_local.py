@@ -116,8 +116,8 @@ while True:
 		pyperclip.copy(current_CB.cb_data)
 		# current_CB = cbdata_plus_time(local_get_clipboard(),time())
 		# print (current_CB.cb_data)
-		# pass
-	sleep(0.5)
+		# passn owner for CLIPBO
+	sleep(1)
 	pass
 pass
 
