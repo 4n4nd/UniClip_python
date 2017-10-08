@@ -2,7 +2,7 @@ from __future__ import print_function
 from clipboard_functions import *
 from time import sleep
 from time import time
-import pyperclip
+# import pyperclip
 
 import httplib2
 import os
@@ -26,8 +26,8 @@ except ImportError:
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
 CLIENT_SECRET_FILE = '/root/Downloads/client_id.json'
 APPLICATION_NAME = 'UniClip_Python_Client'
-CB_DATA_CELL = 'A100'
-CB_DATA_TIMESTAMP_CELL = 'B100'
+CB_DATA_CELL = 'A1'
+CB_DATA_TIMESTAMP_CELL = 'B1'
 NEW_AUTH = False
 DEFAULT_URL = 'https://docs.google.com/spreadsheets/d/1xB6whn__TJZ54bHUq7w9dr2O4NXXp9bi8cRkUFCQUzQ/edit#gid=0'
 
@@ -58,7 +58,7 @@ def get_credentials():
         else: # Needed only for compatibility with Python 2.6
             credentials = tools.run(flow, store)
         print('Storing credentials to ' + credential_path)
-        NEW_AUTH = True
+        # NEW_AUTH = True
     return credentials
 
 
@@ -78,7 +78,7 @@ class cbdata_plus_time(object):
 
 credentials=get_credentials()
 gc = gspread.authorize(credentials)
-sheet_url = input("Please enter the url of a google sheet:")
+sheet_url = raw_input("Please enter the url of a google sheet:")
 sheet_url = 'https://docs.google.com/spreadsheets/d/1xB6whn__TJZ54bHUq7w9dr2O4NXXp9bi8cRkUFCQUzQ/edit#gid=0'
 # sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1xB6whn__TJZ54bHUq7w9dr2O4NXXp9bi8cRkUFCQUzQ/edit#gid=0')
 sh = gc.open_by_url(sheet_url)
@@ -86,10 +86,10 @@ worksheet = sh.sheet1
 
 # sh = gc.create('UniClip_Python')
 # sh.share('asan@bu.edu', perm_type='user', role='writer')
-if NEW_AUTH:
-	worksheet.update_acell(CB_DATA_TIMESTAMP_CELL, "'"+str(time()))
-	worksheet.update_acell(CB_DATA_CELL,"'"+local_get_clipboard())
-	pass
+# if NEW_AUTH:
+# 	worksheet.update_acell(CB_DATA_TIMESTAMP_CELL, "'"+str(time()))
+# 	worksheet.update_acell(CB_DATA_CELL,"'"+local_get_clipboard())
+# 	pass
 # val = worksheet.acell('B1').value
 worksheet.update_acell(CB_DATA_TIMESTAMP_CELL, "'"+str(time()))
 worksheet.update_acell(CB_DATA_CELL,"'"+local_get_clipboard())
@@ -117,10 +117,10 @@ while True:
 	# print()
 	# if condition to compare timestamps
 	# Update remote clipboard here
-	print('this string ->')
-	print(current_CB.cb_data)
-	# local_set_clipboard(str(current_CB.cb_data))
-	pyperclip.copy(current_CB.cb_data)
+	# print('this string ->')
+	# print(current_CB.cb_data)
+	local_set_clipboard(str(current_CB.cb_data))
+	# pyperclip.copy(current_CB.cb_data)
 	# current_CB = cbdata_plus_time(local_get_clipboard(),time())
 	# print (current_CB.cb_data)
 	# passn owner for CLIPBO
