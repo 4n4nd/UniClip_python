@@ -24,7 +24,8 @@ except ImportError:
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/sheets.googleapis.com-python-quickstart.json
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
-CLIENT_SECRET_FILE = '/root/Downloads/client_id.json'
+# CLIENT_SECRET_FILE = '/root/Downloads/client_id.json'
+CLIENT_SECRET_FILE = raw_input('Enter the location of the client_id.jason: ')
 APPLICATION_NAME = 'UniClip_Python_Client'
 CB_DATA_CELL = 'A1'
 CB_DATA_TIMESTAMP_CELL = 'B1'
