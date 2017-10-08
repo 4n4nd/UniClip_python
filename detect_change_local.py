@@ -87,37 +87,44 @@ worksheet = sh.sheet1
 # sh = gc.create('UniClip_Python')
 # sh.share('asan@bu.edu', perm_type='user', role='writer')
 if NEW_AUTH:
-	worksheet.update_acell(CB_DATA_TIMESTAMP_CELL, "'"+time())
+	worksheet.update_acell(CB_DATA_TIMESTAMP_CELL, "'"+str(time()))
 	worksheet.update_acell(CB_DATA_CELL,"'"+local_get_clipboard())
 	pass
 # val = worksheet.acell('B1').value
-
-
+worksheet.update_acell(CB_DATA_TIMESTAMP_CELL, "'"+str(time()))
+worksheet.update_acell(CB_DATA_CELL,"'"+local_get_clipboard())
+print(local_get_clipboard())
+print(time())
 current_CB = cbdata_plus_time(local_get_clipboard(),time())
 
 while True:
+	remote_cb_data = cbdata_plus_time(worksheet.acell(CB_DATA_CELL).value,float(worksheet.acell(CB_DATA_TIMESTAMP_CELL).value))
 	if current_CB.cb_data != local_get_clipboard():
-		remote_cb_data = cbdata_plus_time(worksheet.acell(CB_DATA_CELL).value,float(worksheet.acell(CB_DATA_TIMESTAMP_CELL).value))
-		if current_CB.timestamp > remote_cb_data.timestamp:
-			current_CB.timestamp=time()
-			print ("Clipboard Changed Updating Remote Clipboard!")
-			worksheet.update_acell(CB_DATA_TIMESTAMP_CELL, "'"+str(current_CB.timestamp))
-			worksheet.update_acell(CB_DATA_CELL,"'"+current_CB.cb_data)
-			pass
-		if current_CB.timestamp < remote_cb_data.timestamp:
-			current_CB=remote_cb_data
-			pass
-		# print()
-		# if condition to compare timestamps
-		# Update remote clipboard here
-		print('this string ->')
-		print(current_CB.cb_data)
-		# local_set_clipboard(str(current_CB.cb_data))
-		pyperclip.copy(current_CB.cb_data)
-		# current_CB = cbdata_plus_time(local_get_clipboard(),time())
-		# print (current_CB.cb_data)
-		# passn owner for CLIPBO
-	sleep(1)
+		current_CB = cbdata_plus_time(local_get_clipboard(),time())
+		pass
+	# if current_CB.cb_data != local_get_clipboard():
+	if current_CB.timestamp > remote_cb_data.timestamp:
+		# current_CB.timestamp=time()
+		print ("Clipboard Changed Updating Remote Clipboard!")
+		worksheet.update_acell(CB_DATA_TIMESTAMP_CELL, "'"+str(current_CB.timestamp))
+		worksheet.update_acell(CB_DATA_CELL,"'"+current_CB.cb_data)
+		current_CB=remote_cb_data
+
+		pass
+	if current_CB.timestamp < remote_cb_data.timestamp:
+		current_CB=remote_cb_data
+		pass
+	# print()
+	# if condition to compare timestamps
+	# Update remote clipboard here
+	print('this string ->')
+	print(current_CB.cb_data)
+	# local_set_clipboard(str(current_CB.cb_data))
+	pyperclip.copy(current_CB.cb_data)
+	# current_CB = cbdata_plus_time(local_get_clipboard(),time())
+	# print (current_CB.cb_data)
+	# passn owner for CLIPBO
+	sleep(5)
 	pass
 pass
 
