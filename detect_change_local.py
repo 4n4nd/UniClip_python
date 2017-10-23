@@ -32,7 +32,8 @@ CB_DATA_TIMESTAMP_CELL = 'B1'
 NEW_AUTH = False
 DEFAULT_URL = 'https://docs.google.com/spreadsheets/d/1xB6whn__TJZ54bHUq7w9dr2O4NXXp9bi8cRkUFCQUzQ/edit#gid=0'
 
-
+# TODO making an alarm do the timing, much more efficient. Change the doc link
+# 	   Also, change the program so that you don't need any user input after the first use.
 def get_credentials():
     """Gets valid user credentials from storage.
 
